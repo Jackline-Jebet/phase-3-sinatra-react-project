@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { useParams, Link, useNavigate  } from "react-router-dom";
-import BackArrow from '../assets/Downward Arrow.svg'
+import { useParams, Link, useHistory  } from "react-router-dom";
+import BackArrow from '../assets/DownArrow.svg'
 import Yes from '../assets/Yes.svg'
 import No from '../assets/No.svg'
 
@@ -11,9 +11,10 @@ function UserPage() {
 
     let { id } = useParams();
     const userID = localStorage.getItem('User ID')
-    let navigate = useNavigate()
+    
 
     const [profile, setProfile] = useState([])
+    let navigate = useHistory()
 
     useEffect(() => {
     
@@ -26,7 +27,7 @@ function UserPage() {
         .then(resp => resp.json())
         .then(userData => setProfile(userData))
     
-      },[])
+      },[id])
 
       function likedUser() {
 
@@ -71,7 +72,7 @@ function UserPage() {
           navigate.push("/")
       }
 
-      const {age, bio, hobby, location, name, picture, preference} = profile
+      const {age, hobby, bio, location, name, picture, preference} = profile
 
     
     return (

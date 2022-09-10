@@ -18,7 +18,7 @@ function Home() {
     .then(resp => resp.json())
     .then(userData => setUserData(userData))
 
-  },[])
+  },[userID])
 
   return (
     <div className="App">

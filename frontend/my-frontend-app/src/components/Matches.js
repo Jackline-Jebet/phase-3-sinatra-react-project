@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import UserCard from './UserCard';
 import { Link } from "react-router-dom";
-import BackArrow from '../assets/Downward Arrow.svg'
+import BackArrow from '../assets/DownArrow.svg'
 
 
 function Matches () {
@@ -20,7 +20,7 @@ function Matches () {
       .then(resp => resp.json())
       .then(userData => setMatchData(userData))
   
-    },[])
+    },[userID])
 
 
     return (
@@ -30,7 +30,7 @@ function Matches () {
 
             <div className="my-8 text-center">
             <h1>Matches</h1>
-            {matchData.length === 0 ? <h3>No matches were found :(</h3> : null }
+            {matchData.length === 0 ? <h3>No matches found :(</h3> : null }
             <div className="grid gap-4 grid-cols-4">
                 {matchData.map(user => <UserCard user={user} key={user.id} />)}
             </div>

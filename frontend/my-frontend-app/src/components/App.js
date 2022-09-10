@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import '../styles/App.css';
 import Home from './Home'
 import Login from './Login'
@@ -13,7 +13,7 @@ import Matches from './Matches'
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  let history = useNavigate();
+  let history = useHistory();
 
   useEffect(() => {
     let stringValue = "true"; 
@@ -70,26 +70,26 @@ function App() {
   return (
 
       <div className="App">
-       <BrowserRouter> 
-      <Routes>
+
+      <Switch>
       <Route exact path="/login">
-        {isLoggedIn ? <Navigate to="/"/> : <Login handleLogin={handleLogin} />}
+        {isLoggedIn ? <Redirect to="/"/> : <Login handleLogin={handleLogin} />}
         </Route>
         <Route exact path="/create-account">
           <CreateAccount />
         </Route>
         <Route exact path="/profile">
-          {isLoggedIn ? <ProfilePage handleLogout={handleLogout}/> : <Navigate to="/login"/>}
+          {isLoggedIn ? <ProfilePage handleLogout={handleLogout}/> : <Redirect to="/login"/>}
         </Route>
         <Route exact path="/">
-          {isLoggedIn ? <Home /> : <Navigate to="/login"/>}
+          {isLoggedIn ? <Home /> : <Redirect to="/login"/>}
         </Route>
         <Route exact path="/matches">
-          {isLoggedIn ? <Matches /> : <Navigate to="/login"/>}
+          {isLoggedIn ? <Matches /> : <Redirect to="/login"/>}
         </Route>
-        <Route path="/:id" children={ isLoggedIn ? <UserPage /> : <Navigate to="/login"/>} />
-      </Routes>
-      </BrowserRouter>
+        <Route path="/:id" children={ isLoggedIn ? <UserPage /> : <Redirect to="/login"/>} />
+      </Switch>
+  
       </div>
 
   );

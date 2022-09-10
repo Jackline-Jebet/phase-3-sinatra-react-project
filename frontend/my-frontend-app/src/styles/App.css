@@ -1,4 +1,4 @@
-/* COLOR-CHANGING BACKGROUND: */
+/* APPLY COLOR-CHANGING BACKGROUND: */
 
 html, body {
   width: 100%;
@@ -13,10 +13,10 @@ body {
 }
 
 .hover-shrink {
-  transition: 0.3s;
+  transition: 0.4s;
 }
 .hover-shrink:hover {
-  transform: scale(0.93)
+  transform: scale(0.91)
 }
 
 @keyframes gradient {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
-import BackArrow from '../assets/Downward Arrow.svg'
+import BackArrow from '../assets/DownArrow.svg'
 
 
 function ProfilePage({handleLogout}) {
