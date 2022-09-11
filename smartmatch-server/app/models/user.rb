@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
 
-    #password setup
-    has_secure_password
-    validates :username, presence: true
-    validates :username, uniqueness: true
+        #sets password
+        has_secure_password
+        validates :username, presence: true
+        validates :username, uniqueness: true
 
         #this user can have many followed users
         has_many :liked_users, foreign_key: :liker_id, class_name: "Match"
